@@ -1,0 +1,9 @@
+{
+  "name": "enronsearch",
+  "version": "0.0.1",
+  "main": "public/enron-search.js",
+  "dependencies": {
+    "jquery": "1.7",
+    "underscore": "1.5.2"
+  }
+}
