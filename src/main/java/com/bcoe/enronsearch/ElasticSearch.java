@@ -170,6 +170,7 @@ public class ElasticSearch {
             .autoGeneratePhraseQueries(true)
             .analyzeWildcard(true)
             .phraseSlop(10)
+            .lowercaseExpandedTerms(false)
         )
         .setFrom(0).setSize(30)
         .addHighlightedField("to", 0, 0)
