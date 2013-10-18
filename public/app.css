@@ -3,6 +3,10 @@ body {
     font-weight: 300;
 }
 
+hr {
+    color: rgb(202, 49, 55);
+}
+
 .wrapper {
     position: relative;
     display: inline-block;
@@ -32,6 +36,12 @@ body {
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+}
+
+.search-box p {
+    width: 400px;
+    padding-bottom: 10px;
+    margin: auto;
 }
 
 .search-box input[type="text"]:focus {
@@ -65,8 +75,16 @@ img.logo {
     color: rgb(100, 100, 100);
 }
 
+.search-results .subject {
+    color: rgb(40, 113, 182);
+    display: block;
+    font-size: 20px;
+}
+
 .button {
     
+    cursor: pointer;
+
     -moz-box-shadow: 0px 1px 0px 0px #1c1b18;
     -webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
     box-shadow: 0px 1px 0px 0px #1c1b18;
@@ -120,6 +138,16 @@ img.logo {
 .count {
     font-style: italic;
     font-weight: bold;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     display: block;
+}
+
+.tag .delete-tag {
+    text-decoration: none;
+    padding-left: 3px;
+    color: rgb(69, 134, 73);
+}
+
+.tag {
+    padding-bottom: 4px;
 }

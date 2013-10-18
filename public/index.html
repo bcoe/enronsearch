@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Eron Email Search</title>
+    <title>Enron Email Dataset</title>
     <link rel="stylesheet" type="text/css" href="./app.css">
     <script type="text/javascript" src="./javascripts/jquery.js"></script>
     <script type="text/javascript" src="./javascripts/underscore.js"></script>
@@ -11,7 +11,6 @@
                 searchInput: $('#search-input'),
                 searchResults: $('#search-results'),
                 highlights: $('#highlights'),
-                clear: $('#clear'),
                 terms: $('#terms')
             }).search();
         });
@@ -21,13 +20,16 @@
     <img src="./logo.png" class="logo"/>
 
     <div class="search-box">
+        <p>
+        Example of <a href="http://www.elasticsearch.org/">ElasticSearch</a> using CMU's <a href="https://www.cs.cmu.edu/~enron/">Enron Email Dataset</a>. Use tab to complete suggestions, hit enter to search, see what fun emails you can find!
+        </p>
+
         <div class="wrapper">
             <input type="text" id="search-input" />
             <div id="highlights" class="button hidden"></div>
         </div>
 
         <div id="terms"></div>
-        <a href="#" id="clear">clear tags</a>
     </div>
 
     <div id="search-results"></div>

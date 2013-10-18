@@ -6,7 +6,6 @@ function EnronSearch(opts) {
     searchResults: null, // The search results div.
     highlights: null, // The suggestion area.
     terms: null, // The terms currently being search for.
-    clear: null, // the clear search button.
     searchTerms: [], // search terms.
     nonce: 0, // used to prevent multiple searches.
   }, opts);
@@ -19,12 +18,17 @@ function EnronSearch(opts) {
 EnronSearch.prototype.clearSearch = function() {
   var _this = this;
 
-  this.clear.click(function() {
-    _this.searchInput.val('');
-    _this.searchTerms = [];
-    _this.highlights.addClass('hidden');
-    _this.terms.text('');
+  $('.delete-tag').live('click', function() {
+    var parent = $(this).parents('span'),
+      tag = parent.find('.value').text();
+
+    _this.searchTerms = _(_this.searchTerms).filter(function(v) {
+      return v !== tag;
+    });
+
+    _this.showTerms();
     _this.search();
+
     return false;
   });
 }
@@ -34,23 +38,46 @@ EnronSearch.prototype.typeAheadSearch = function() {
   var _this = this,
     data = null;
 
+  $('.button').live('click', function() {
+    _this.completeTag(true);
+    return false;
+  });
+
   this.searchInput.keydown(function(e) {
-    if (e.keyCode === 13 && _this.searchInput.val().length) {
-      // AND together search terms as enter is pressed.
-
-      if (_this.highlights.hasClass('hidden')) {
-        _this.searchTerms.push(_this.searchInput.val());
-      } else {
-        _this.searchTerms.push(_this.highlights.text());
-      }
-
-      _this.highlights.addClass('hidden');
-      _this.searchInput.val(''); // reset search field.
-      _this.terms.text( _this.searchTerms.join(', ') );
+    if ( e.keyCode === 9 && _this.searchInput.val().length) {
+      _this.completeTag(true);
+      return false;
+    } else if (e.keyCode === 13) {
+      _this.completeTag(false);
+      return false;
     }
 
     _this.search();
   });
+};
+
+EnronSearch.prototype.completeTag = function(useSuggestion) {
+  // Keep a canonical list of terms.
+  if (this.highlights.hasClass('hidden') || !useSuggestion) {
+    this.searchTerms.push(this.searchInput.val());
+  } else {
+    this.searchTerms.push(this.highlights.text());
+  }
+
+  // Reset input box.
+  this.highlights.addClass('hidden');
+  this.searchInput.val(''); // reset search field.
+
+  this.showTerms();
+  this.search();
+};
+
+// Displa term elements below search box.
+EnronSearch.prototype.showTerms = function() {
+  // Display tag elements.
+  this.terms.html( _(this.searchTerms).map(function(v) {
+    return '<span class="tag"><span class="value">' + v + '</span><a class="delete-tag" href="#">[x]</a></span>';
+  }).join(', ') );
 };
 
 // Hit our Java Controller for Search results,
@@ -107,7 +134,7 @@ EnronSearch.prototype.displaySearchResults = function(results) {
   results.hits.hits.forEach(function(hit) {
     var message = hit._source,
       element = $('<div class="search-results">\
-        <b class="subject"></b><br />\
+        <b class="subject"></b>\
         <div><b>from: </b><i class="from"></i></div>\
         <div><b>to: </b><i class="to"></i></div>\
         <p class="body"></p>\
@@ -150,7 +177,10 @@ EnronSearch.prototype.displayHighlighted = function(results) {
           return;
         }
       });
-    } else if ( from.indexOf(this.searchInput.val()) > -1 ) {
+    }
+
+    // Was it the from field being highlighted?
+    if ( !highlight && from.indexOf(this.searchInput.val()) > -1 ) {
       highlight = from;
     }
 
