@@ -4,40 +4,54 @@ EnronSearch
 I wanted to play a bit with ElasticSearch's Java bindings, in the process
 I made this fun little applicaton.
 
+EnronSearch, is an ElasticSearch index of the 500,000 Enron emails in the corpus provided by CMU:
+
+https://www.cs.cmu.edu/~enron/
+
 EnronSearch:
 
-* provides command-line-tools for downloading and indexing CMU's Enron Email Corpus.
-* includes a small Spark-based web-app for hosting the search engine on Heroku.
-* provides a small JavaScript library for performing type-ahead search on the corpus.
+* provides command-line-tools for downloading and indexing the Enron emails.
+* provides a small Spark-based web-app for interacting with the indexed corpus.
+    * including some slick JavaScript for performing type-ahead searches.
+
+Here it is in action:
+
+http:/enronsearch.herokuapp.com
 
 Installing
 ----------
 
-Install the dependent packages:
+You will need to have an ElasticSearch server up and running to use EnronSearch.
+
+Set the `ES_PORT` and `ES_HOST` environment variables, corresponding to this server.
+
+Once you've done this:
+
+* Install EnronSearch's dependent packages.
 
 ```bash
 mvn package
 ```
 
-Download the email corpus:
+* Download the Enron email corpus:
 
 ```bash
 java -cp target/classes:target/dependency/*:./ com.bcoe.enronsearch.Cli --download
 ```
 
-Set the `ES_PORT` and `ES_HOST` environment variables.
-
-Index the corpus:
+* Index the corpus:
 
 ```bash
 java -cp target/classes:target/dependency/*:./ com.bcoe.enronsearch.Cli --index
 ```
 
-Run the search engine:
+* And run the search engine:
 
 ```bash
 java -cp target/classes:target/dependency/*:./ com.bcoe.enronsearch.Cli --server
 ```
+
+EnronSearch will run on Heroku out of the gate, but you will need to host the ElasticSearch server elsewhere.
 
 Have fun!
 
