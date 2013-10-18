@@ -1,0 +1,60 @@
+Delivered-To: bencoe@gmail.comReceived: by 10.204.239.70 with SMTP id kv6csp113266bkb;
+        Thu, 17 Oct 2013 06:52:55 -0700 (PDT)
+X-Received: by 10.194.242.200 with SMTP id ws8mr1847620wjc.60.1382017975158;
+        Thu, 17 Oct 2013 06:52:55 -0700 (PDT)
+Return-Path: <ben+caf_=bencoe=gmail.com@attachments.me>
+Received: from mail-we0-f174.google.com (mail-we0-f174.google.com [74.125.82.174])
+        by mx.google.com with ESMTPS id mw18si2609876wic.73.2013.10.17.06.52.55
+        for <bencoe@gmail.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 17 Oct 2013 06:52:55 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning ben+caf_=bencoe=gmail.com@attachments.me does not designate 74.125.82.174 as permitted sender) client-ip=74.125.82.174;
+Authentication-Results: mx.google.com;
+       spf=softfail (google.com: domain of transitioning ben+caf_=bencoe=gmail.com@attachments.me does not designate 74.125.82.174 as permitted sender) smtp.mail=ben+caf_=bencoe=gmail.com@attachments.me
+Received: by mail-we0-f174.google.com with SMTP id u56so2266190wes.33
+        for <bencoe@gmail.com>; Thu, 17 Oct 2013 06:52:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-original-authentication-results:x-gm-message-state:delivered-to
+         :to:subject:message-id:date:from;
+        bh=Ao9NzNnjt6DCovoE0I7+m7FcCLqS/zQJkyzSAG+N4Ms=;
+        b=mZVXTHzqCP/3CF89ZmC7DtTFXs4n33iTC42SlqqljcckqrPO655SWIdB/HpNKC25Ve
+         j0sYg5p0/dUEmEyjGSeiWf7n/83g9kQuObHEk8Oldn2MbeWPw27LXhgJ3zs4dNGRLWTH
+         7P8Wzc1pD+Wj8A08JNe6+48KLMTnFJSw6DuyxqP3SATGatQ0vWM7S5wrX5SnEXur3E2Y
+         cxe9YgYJABSTvVdZsFRVhmLbivLdP+bKxthso5TA+Fm/SBfOCMSMJEtnxauOT4XS5szW
+         BjGAyvbkO47me7DTer/rqhLmMT0gtoONMcelGCZw/rgiZZjI4rxqevtTWHKAVX2DRsxW
+         fjTw==
+X-Original-Authentication-Results: mx.google.com;       spf=neutral (google.com: 107.21.100.4 is neither permitted nor denied by best guess record for domain of nagios@aggregato.ec2.internal) smtp.mail=nagios@aggregato.ec2.internal
+X-Gm-Message-State: ALoCoQmuLbIJ0lVk5hItKkqvHa9yhAWV9GXJvMNWhQX65Y9UbwI8KWAy4rAMYf9wYHH30pc9rfmE
+X-Received: by 10.194.11.38 with SMTP id n6mr7630083wjb.25.1382017974976;
+        Thu, 17 Oct 2013 06:52:54 -0700 (PDT)
+X-Forwarded-To: 4158521262@vtext.com, larry@attachments.me, bencoe@gmail.com, 4153147891@vtext.com
+X-Forwarded-For: ben@attachments.me 4158521262@vtext.com, larry@attachments.me, bencoe@gmail.com, 4153147891@vtext.com
+Delivered-To: ben@attachments.me
+Received: by 10.216.96.131 with SMTP id r3csp113002wef;
+        Thu, 17 Oct 2013 06:52:54 -0700 (PDT)
+X-Received: by 10.224.12.207 with SMTP id y15mr12302408qay.101.1382017973657;
+        Thu, 17 Oct 2013 06:52:53 -0700 (PDT)
+Return-Path: <nagios@aggregato.ec2.internal>
+Received: from aggregato.ec2.internal (ec2-107-21-100-4.compute-1.amazonaws.com. [107.21.100.4])
+        by mx.google.com with ESMTP id d6si38285726qej.115.1969.12.31.16.00.00;
+        Thu, 17 Oct 2013 06:52:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 107.21.100.4 is neither permitted nor denied by best guess record for domain of nagios@aggregato.ec2.internal) client-ip=107.21.100.4;
+Received: by aggregato.ec2.internal (Postfix, from userid 108)
+  id 162A54805B; Thu, 17 Oct 2013 13:49:07 +0000 (UTC)
+To: ben@attachments.me
+Subject: ** RECOVERY Service Alert: attachments/resque is OK **
+Message-Id: <20131017134907.162A54805B@aggregato.ec2.internal>
+Date: Thu, 17 Oct 2013 13:49:07 +0000 (UTC)
+From: nagios@aggregato.ec2.internal
+
+Details: Redis queue at 1/50
+
+Service: resque
+Host: attachments
+Address: attachments.me
+State: OK
+
+Date/Time: Thu Oct 17 13:49:07 UTC 2013
+
+Notification Type: RECOVERY

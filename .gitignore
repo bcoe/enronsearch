@@ -1,4 +1,4 @@
 /target
 /bower_components
 .DS_Store
-/dataset
+/dataset/enron*

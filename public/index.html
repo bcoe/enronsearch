@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Eron Search</title>
+    <script type="text/javascript" src="./jquery.js"></script>
+    <script type="text/javascript" src="./underscore.js"></script>
+    <script type="text/javascript" src="./enron-search.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            new EnronSearch({
+                searchInput: $('#search-input'),
+                searchResults: $('#search-results'),
+                highlights: $('#highlights'),
+                clear: $('#clear'),
+                terms: $('#terms')
+            }).search();
+        });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="search-input" />
+    <span id="terms"></span>
+    <a href="#" id="clear">clear search</a>
+    <div id="highlights"></div>
+    <div id="search-results"></div>
+  </body>
+</html>
