@@ -167,7 +167,7 @@ public class ElasticSearch {
           QueryBuilders.queryString(query)
           .field("_all")
         )
-        .setFrom(0).setSize(30)
+        .setFrom(0).setSize(10)
         .addHighlightedField("to", 0, 0)
         .addHighlightedField("from", 0, 0)
         .execute()
