@@ -11,15 +11,16 @@ public class WebApp
 {
     public static void start() {
 
-        final ElasticSearch es = new ElasticSearch();
+        //final ElasticSearch es = new ElasticSearch();
         
         staticFileLocation("/public");
 
         get(new Route("/search") {
             @Override
             public Object handle(Request request, Response response) {
-                response.type("application/json");
-                return es.search( request.queryParams("q") ).toString();
+                return "Hello World!";
+              /*  response.type("application/json");
+                return es.search( request.queryParams("q") ).toString();*/
             }
         });
     }
