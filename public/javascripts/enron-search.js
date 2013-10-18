@@ -56,7 +56,8 @@ EnronSearch.prototype.typeAheadSearch = function() {
 // Hit our Java Controller for Search results,
 // throttled to once every 250ms.
 EnronSearch.prototype.search = function() {
-  this.safeSearch( ( this.nonce = (this.nonce++) ) );
+  this.nonce = this.nonce + 1;
+  this.safeSearch( this.nonce );
 };
 
 EnronSearch.prototype.safeSearch = function(nonce) {
