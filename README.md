@@ -1,8 +1,31 @@
 EnronSearch
 ===========
 
-Performs type ahead search on the Enron email dataset.
+Search the Eron email corpus: https://www.cs.cmu.edu/~enron/
 
-mvn clean dependency:copy-dependencies package
+Installing
+----------
 
-java -cp target/enronsearch-1.0-SNAPSHOT.jar:target/dependency/*:./ com.bcoe.enronsearch.Cli
+Install the dependent packages:
+
+```bash
+mvn package
+```
+
+Download the email corpus:
+
+```bash
+java -cp target/classes:target/dependency/*:./ com.bcoe.enronsearch.Cli --download
+```
+
+Index the corpus:
+
+```bash
+java -cp target/classes:target/dependency/*:./ com.bcoe.enronsearch.Cli --index
+```
+
+Run the search engine:
+
+```bash
+java -cp target/classes:target/dependency/*:./ com.bcoe.enronsearch.Cli --server
+```
