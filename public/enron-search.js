@@ -20,6 +20,7 @@ EnronSearch.prototype.clearSearch = function() {
   var _this = this;
 
   this.clear.click(function() {
+    _this.searchInput.val('');
     _this.searchTerms = [];
     _this.highlights.html('');
     _this.terms.text('');
