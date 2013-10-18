@@ -3,8 +3,6 @@ package com.bcoe.enronsearch;
 import java.io.IOException;
 
 import org.elasticsearch.client.Client;
-import org.elasticsearch.node.*;
-import static org.elasticsearch.node.NodeBuilder.*;
 
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
@@ -23,6 +21,9 @@ import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.FilterBuilders.*;
 import org.elasticsearch.index.query.QueryBuilders;
 
+import org.elasticsearch.client.transport.*;
+import org.elasticsearch.common.transport.InetSocketTransportAddress;
+
 /*
 Wrapper for ElasticSearch, performs
 searching and indexing tasks.
@@ -34,9 +35,11 @@ public class ElasticSearch {
   private Client client;
 
   public ElasticSearch() {
-    client = nodeBuilder()
-      .node()
-      .client();
+    client = new TransportClient()
+      .addTransportAddress(new InetSocketTransportAddress(
+        System.getenv("ES_HOST"),
+        Integer.parseInt( System.getenv("ES_PORT") )
+      ));
   }
 
   public void index() {
@@ -46,10 +49,14 @@ public class ElasticSearch {
   }
 
   private void deleteIndex() {
-    client.admin()
-      .indices()
-      .delete(new DeleteIndexRequest(indexName))
-      .actionGet();        
+    try {
+      client.admin()
+        .indices()
+        .delete(new DeleteIndexRequest(indexName))
+        .actionGet();
+    } catch (Exception e) {
+      System.out.println(e);
+    }
   }
 
   private void createIndex() {

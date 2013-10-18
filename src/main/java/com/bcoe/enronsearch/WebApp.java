@@ -11,7 +11,7 @@ public class WebApp
 {
     public static void start() {
 
-        //final ElasticSearch es = new ElasticSearch();
+        final ElasticSearch es = new ElasticSearch();
         
         if (System.getenv("PORT") != null) {
             setPort( Integer.parseInt( System.getenv("PORT") ));
@@ -22,9 +22,8 @@ public class WebApp
         get(new Route("/search") {
             @Override
             public Object handle(Request request, Response response) {
-                return "Hello World!";
-              /*  response.type("application/json");
-                return es.search( request.queryParams("q") ).toString();*/
+                response.type("application/json");
+                return es.search( request.queryParams("q") ).toString();
             }
         });
     }
