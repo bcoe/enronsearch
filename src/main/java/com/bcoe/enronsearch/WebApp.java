@@ -13,6 +13,10 @@ public class WebApp
 
         //final ElasticSearch es = new ElasticSearch();
         
+        if (System.getenv("SPARK_PORT") != null) {
+            setPort( Integer.parseInt( System.getenv("SPARK_PORT") ));
+        }
+
         staticFileLocation("/public");
 
         get(new Route("/search") {
