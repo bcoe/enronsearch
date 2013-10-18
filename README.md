@@ -18,6 +18,8 @@ Download the email corpus:
 java -cp target/classes:target/dependency/*:./ com.bcoe.enronsearch.Cli --download
 ```
 
+Set the `ES_PORT` and `ES_HOST` environment variables.
+
 Index the corpus:
 
 ```bash

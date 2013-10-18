@@ -22,7 +22,7 @@ EnronSearch.prototype.clearSearch = function() {
   this.clear.click(function() {
     _this.searchInput.val('');
     _this.searchTerms = [];
-    _this.highlights.html('');
+    _this.highlights.addClass('hidden');
     _this.terms.text('');
     _this.search();
     return false;
@@ -44,6 +44,7 @@ EnronSearch.prototype.typeAheadSearch = function() {
         _this.searchTerms.push(_this.searchInput.val());
       }
 
+      _this.highlights.addClass('hidden');
       _this.searchInput.val(''); // reset search field.
       _this.terms.text( _this.searchTerms.join(', ') );
     }
@@ -106,9 +107,8 @@ EnronSearch.prototype.displaySearchResults = function(results) {
     var message = hit._source,
       element = $('<div class="search-results">\
         <b class="subject"></b><br />\
-        <b>to: </b><i class="to"></i>\
-        <b>from: </b><i class="from"></i>\
-        <br />\
+        <div><b>from: </b><i class="from"></i></div>\
+        <div><b>to: </b><i class="to"></i></div>\
         <p class="body"></p>\
         <hr />\
       </div>');
@@ -116,7 +116,7 @@ EnronSearch.prototype.displaySearchResults = function(results) {
     element.find('.subject').text(message.subject);
     element.find('.to').text(message.to);
     element.find('.from').text(message.from);
-    element.find('.body').text(message.body.replace(/[\r\n]/, ' ').substring(0, 4096) + '…');
+    element.find('.body').text(message.body.replace(/[\r\n]/, ' ').substring(0, 1024) + '…');
 
     _this.searchResults.append(element);
   });
@@ -128,7 +128,7 @@ EnronSearch.prototype.displayHighlighted = function(results) {
 
   var _this = this;
 
-  this.highlights.html('');
+  this.highlights.addClass('hidden');
 
   if (this.searchInput.val().length && results.hits.hits.length && results.hits.hits[0].highlight) {
 
@@ -155,6 +155,9 @@ EnronSearch.prototype.displayHighlighted = function(results) {
 
     // Don't highlight an email we already scope search
     // results to.
-    if (highlight) this.highlights.text(highlight);
+    if (highlight) {
+      this.highlights.text(highlight);
+      this.highlights.removeClass('hidden');
+    }
   }
 };
