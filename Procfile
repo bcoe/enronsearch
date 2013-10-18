@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependency/*:./ com.bcoe.enronsearch.Cli -s
+web: java -cp target/classes:"target/dependency/*":./ com.bcoe.enronsearch.Cli -s
