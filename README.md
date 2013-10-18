@@ -4,19 +4,19 @@ EnronSearch
 I wanted to play a bit with ElasticSearch's Java bindings, in the process
 I made this fun little applicaton.
 
-EnronSearch, is an ElasticSearch index of the 500,000 Enron emails in the corpus provided by CMU:
+EnronSearch is an ElasticSearch index of the 500,000 emails in CMU's Enron corpus.
 
 https://www.cs.cmu.edu/~enron/
 
 EnronSearch:
 
-* provides command-line-tools for downloading and indexing the Enron emails.
+* provides command-line tools for downloading and indexing the Enron emails.
 * provides a small Spark-based web-app for interacting with the indexed corpus.
     * including some slick JavaScript for performing type-ahead searches.
 
 Here it is in action:
 
-http:/enronsearch.herokuapp.com
+http://enronsearch.herokuapp.com
 
 Installing
 ----------
