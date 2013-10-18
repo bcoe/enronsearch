@@ -38,10 +38,10 @@ EnronSearch.prototype.typeAheadSearch = function() {
     if (e.keyCode === 13 && _this.searchInput.val().length) {
       // AND together search terms as enter is pressed.
 
-      if (_this.highlights.text().length) {
-        _this.searchTerms.push(_this.highlights.text());
-      } else {
+      if (_this.highlights.hasClass('hidden')) {
         _this.searchTerms.push(_this.searchInput.val());
+      } else {
+        _this.searchTerms.push(_this.highlights.text());
       }
 
       _this.highlights.addClass('hidden');
