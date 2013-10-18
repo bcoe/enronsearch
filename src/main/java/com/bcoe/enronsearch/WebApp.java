@@ -13,8 +13,8 @@ public class WebApp
 
         //final ElasticSearch es = new ElasticSearch();
         
-        if (System.getenv("SPARK_PORT") != null) {
-            setPort( Integer.parseInt( System.getenv("SPARK_PORT") ));
+        if (System.getenv("PORT") != null) {
+            setPort( Integer.parseInt( System.getenv("PORT") ));
         }
 
         staticFileLocation("/public");
