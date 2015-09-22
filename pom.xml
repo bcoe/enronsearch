@@ -27,7 +27,7 @@
     <dependency>
       <groupId>org.elasticsearch</groupId>
       <artifactId>elasticsearch</artifactId>
-      <version>0.90.5</version>
+      <version>1.7.2</version>
     </dependency>
 
     <dependency>
@@ -46,7 +46,7 @@
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
       <version>1.4.7</version>
-    </dependency>     
+    </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -86,7 +86,7 @@
               </execution>
           </executions>
       </plugin>
-      
+
     </plugins>
   </build>
 
