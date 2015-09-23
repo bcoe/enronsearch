@@ -19,6 +19,22 @@ public class Message
   private String from;
   private String subject;
   private String body = "";
+  private String cc;
+  private String bcc;
+  
+  public String getCc() {
+	return cc;
+}
+
+public String getBcc() {
+	return bcc;
+}
+
+public String getDateString() {
+	return dateString;
+}
+
+private String dateString;
 
   public Message(MimeMessage rawMessage) {
     extractHeaders(rawMessage);
@@ -44,6 +60,15 @@ public class Message
           case "Message-ID":
             id = h.getValue(); 
             break;
+          case "Cc":
+        	cc = h.getValue();
+        	break;
+          case "Bcc":
+        	bcc = h.getValue();
+        	break;
+          case "Date":
+        	dateString = h.getValue();
+        	break;
         }
       }
 
